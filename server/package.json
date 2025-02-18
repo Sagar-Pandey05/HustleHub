@@ -1,0 +1,17 @@
+{
+  "name": "hustlehub",
+  "version": "1.0.0",
+  "description": "freelance web apication helps you to find right one for your project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tanya|Sagar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  }
+}
