@@ -4,6 +4,7 @@
   "description": "freelance web apication helps you to find right one for your project.",
   "main": "index.js",
   "scripts": {
+    "type": "module",
     "start": "npx nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,6 +13,7 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "mongoose": "^8.10.1",
     "nodemon": "^3.1.9"
   }
 }
