@@ -1,9 +1,8 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connect = require("./db/db");
-const authRoutes = require("./routes/api/auth");
-const userRoutes = require("./routes/api/users");
-const projectRoutes = require("./routes/api/projects");
+const authRoutes = require("../routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 dotenv.config();
 connect(); // Connect to MongoDB
@@ -14,8 +13,6 @@ app.use(express.json());
 // API Routes
 app.use("/api/auth", authRoutes);
 
-app.use("/api/users", userRoutes); // user Routes
-
-app.use("/api/projects", projectRoutes);   // project Routes
+app.use("/api/users", userRoutes); // Use user routes
 
 module.exports = app;

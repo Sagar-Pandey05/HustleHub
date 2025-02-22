@@ -1,13 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-function connect() {
+function connect(){
     mongoose.connect(process.env.MONGO_URL)
-    .then(() => {
-        console.log("Successfully connected with MongoDB!");
+    .then(()=>{
+        console.log("Successfully connected with mongoDB!");
+    }).catch((error)=>{
+        console.log(error.message);
     })
-    .catch((error) => {
-        console.log("MongoDB connection error:", error.message);
-    });
 }
 
-module.exports = connect; // CommonJS export
+export default connect;
