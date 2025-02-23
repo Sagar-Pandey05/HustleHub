@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Home = () => {
+const Root = () => {
   return (
     <div className="relative w-full h-screen bg-gray-900 text-white flex items-center justify-center">
       {/* Background Image */}
@@ -36,4 +36,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Root
