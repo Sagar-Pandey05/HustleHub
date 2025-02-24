@@ -1,11 +1,16 @@
-const Project = require("../../models/Project");
+ const Project = require("../models/Project");
 
-// @desc    Create a new project (Employer only)
-// @route   POST /api/projects
-// @access  Private (Employer)
+
+ // @desc    Create a new project (Employer only)
+ // @route   POST /api/projects
+ // @access  Private (Employer)
 const createProject = async (req, res) => {
     try {
         const { title, description, budget } = req.body;
+
+        if (req.user.role !== "employer") {
+            return res.status(403).json({ message: "Access Denied. Only employers can create projects." });
+        }
 
         if (!title || !description || !budget) {
             return res.status(400).json({ message: "All fields are required" });
@@ -15,7 +20,7 @@ const createProject = async (req, res) => {
             title,
             description,
             budget,
-            employer: req.user.userId, // Employer's ID from auth middleware
+            employer: req.user.userId,
         });
 
         const savedProject = await project.save();
@@ -24,6 +29,8 @@ const createProject = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+
 
 // @desc    Get all projects
 // @route   GET /api/projects
@@ -103,9 +110,9 @@ const deleteProject = async (req, res) => {
 };
 
 module.exports = {
-    createProject,
-    getAllProjects,
-    getProjectById,
-    updateProject,
-    deleteProject,
+    createProject: createProject,
+    getAllProjects: getAllProjects,
+    getProjectById: getProjectById,
+    updateProject: updateProject,
+    deleteProject: deleteProject,
 };

@@ -1,8 +1,8 @@
 const express = require("express");
-const { getUserProfile, updateUserProfile, deleteUser, getAllUsers } = require("../controllers/userController");
-const authMiddleware = require("../middleware/authMiddleware");
-
+const { getUserProfile, updateUserProfile, deleteUser, getAllUsers } = require("../../controllers/userController");
+const  authMiddleware = require("../../middleware/authMiddleware");
 const router = express.Router();
+
 
 // Protected routes (User must be logged in)
 router.get("/profile", authMiddleware, getUserProfile);

@@ -8,6 +8,7 @@ const projectRoutes = require("./routes/api/projects");
 dotenv.config();
 connect(); // Connect to MongoDB
 
+app.use(express.urlencoded({ extended: true }));
 const app = express();
 app.use(express.json());
 

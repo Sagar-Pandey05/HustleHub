@@ -1,6 +1,10 @@
 const jwt = require("jsonwebtoken");
 
 const authMiddleware = (req, res, next) => {
+    const authHeader = req.headers["authorization"];
+    //console.log("Auth Header:", authHeader); // Log to check if token arrives
+  
+
     const token = req.header("Authorization")?.split(" ")[1];
 
     if (!token) {
@@ -16,4 +20,6 @@ const authMiddleware = (req, res, next) => {
     }
 };
 
-module.exports = authMiddleware;
+  module.exports = authMiddleware ;
+
+
