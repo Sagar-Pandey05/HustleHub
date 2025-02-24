@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
 const connect = require("./db/db");
+const cors = require("cors");
 
 const authRoutes = require("./routes/api/auth");
 const userRoutes = require("./routes/api/users");
@@ -13,6 +14,9 @@ const port = process.env.PORT || 5000;
 
 // Connect to the database
 connect();
+
+// Middleware for enabling CORS
+app.use(cors());
 
 // Middleware for parsing request bodies
 app.use(express.json());
