@@ -1,20 +1,36 @@
 const express = require("express");
-const connect = require("./db/db");
-const dotenv= require("dotenv");
-
+const dotenv = require("dotenv");
 dotenv.config();
-connect();
+const connect = require("./db/db");
+
+const authRoutes = require("./routes/api/auth");
+const userRoutes = require("./routes/api/users");
+const projectRoutes = require("./routes/api/projects");
+
 
 const app = express();
-const port = process.env.PORT || 5000;  // Default to 5000 if PORT is not set
+const port = process.env.PORT || 5000;
 
-app.use(express.urlencoded({ extended: true }));
+// Connect to the database
+connect();
+
+// Middleware for parsing request bodies
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
+// API Routes
+
+app.get('/', (req,res) => {
+  res.send('API Running');
 });
 
+app.use("/api/auth", authRoutes);      // Authentication routes
+app.use("/api/users", userRoutes);      // User-related routes
+app.use("/api/projects", projectRoutes); // Project-related routes
+
+// Start the server
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
+
+module.exports = app;

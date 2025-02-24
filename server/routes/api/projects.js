@@ -10,6 +10,12 @@ const authMiddleware = require("../../middleware/authMiddleware");
 
 const router = express.Router();
 
+console.log("createProject:", typeof createProject); // Should log 'function'
+console.log("authMiddleware:", typeof authMiddleware); // Should log 'function'
+
+
+console.log("createProject:", createProject); // Check if this logs correctly
+
 // Public Routes
 router.get("/", getAllProjects);
 router.get("/:id", getProjectById);
