@@ -6,17 +6,17 @@
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [role, setRole] = useState("Client");
+    const [role, setRole] = useState("");
 
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
       e.preventDefault();
 
-      axios.post("/api/auth", { name, email, password, role })
+      axios.post("/api/auth/register", { name, email, password, role })
         .then((response) => {
           console.log(response.data);
-          navigate("/home"); 
+          navigate("/login"); 
         })
         .catch((error) => {
           console.log(error);
@@ -84,9 +84,9 @@
                 className="w-full mt-1 mb-3 px-4 py-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
                 required
               >
-                <option value="client">Client</option>
-                <option value="freelancer">Freelancer</option>
-                <option value="admin">Admin</option>
+                <option value="Client">Client</option>
+                <option value="Freelancer">Freelancer</option>
+                {/* <option value="admin">Admin</option> */}
               </select>
             </div>
 
